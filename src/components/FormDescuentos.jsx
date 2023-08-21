@@ -4,23 +4,34 @@ import VictoryGraphic from "./VictoryGraphic";
 import Discount from "./Discount";
 
 export default function FormDescuentos({ allDescount }) {
-  const [originalPrice, setOriginalPrice] = useState(100);
-  const [discount, setDiscount] = useState("");
+  const [originalPrice, setOriginalPrice] = useState(0);
+  const [discount, setDiscount] = useState(5);
   const [total, setTotal] = useState(0);
   const [ahorros, setAhorros] = useState(0);
+  const [saveOriginalPrice,setSaveOriginalPrice] = useState(260)
+  //const [percentAdd, setPercentAdd] = useState(10);
+  //const [percentEnd, setPercentEnd] = useState(90);
 
   const preventEvent = (e) => {
+    setSaveOriginalPrice(originalPrice)
     setTotal((((100 - discount) * originalPrice) / 100).toFixed(2));
     setAhorros(((originalPrice * discount) / 100).toFixed(2));
     e.preventDefault();
+    //setPercentAdd(Math.round((ahorros / originalPrice) * 100));
+    //setPercentEnd(100 - percentAdd);
   };
+  
 
   const updateValue = (value) => {
     setDiscount(value);
   };
-  let percentageAhorro = Math.round((ahorros / originalPrice) * 100);
-  let percentagePfinal = 100 - percentageAhorro;
 
+  
+  
+console.log(originalPrice,total);
+console.log(ahorros, discount);
+  
+  //console.log(JSON.stringify(percentageAhorro,percentagePfinal));
 
   return (
     <div className="black-color flow">
@@ -29,7 +40,7 @@ export default function FormDescuentos({ allDescount }) {
           <label>
             Precio original
             <input
-              value={originalPrice}
+              
               required
               placeholder="260"
               onChange={(e) => setOriginalPrice(e.target.value)}
@@ -63,8 +74,8 @@ export default function FormDescuentos({ allDescount }) {
       <div className="full-grid">
         <div className="graphic">
           <VictoryGraphic
-            percentageAhorro={percentageAhorro}
-            percentagePfinal={percentagePfinal}
+            ahorros={+ahorros}
+            originalPrice={+saveOriginalPrice}
           ></VictoryGraphic>
         </div>
         <div className="grid">

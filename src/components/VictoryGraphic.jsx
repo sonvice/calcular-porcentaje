@@ -1,6 +1,12 @@
 import { VictoryPie, VictoryLabel, VictoryLegend } from "victory";
 
-export default function VictoryGraphic({ percentageAhorro, percentagePfinal }) {
+export default function VictoryGraphic({ ahorros, originalPrice }) {
+    console.log(ahorros, originalPrice);
+  let percentageAhorro = Math.round((ahorros / originalPrice) * 100);
+  let percentagePfinal = 100 - percentageAhorro;
+
+  console.log(percentageAhorro, percentagePfinal);
+
   return (
     <>
       <VictoryPie
@@ -20,9 +26,8 @@ export default function VictoryGraphic({ percentageAhorro, percentagePfinal }) {
       <VictoryLegend
         x={125}
         y={10}
-        colorScale={["#43DB92","#FB1818"]}
+        colorScale={["#43DB92", "#FB1818"]}
         height={60}
-        
         orientation="horizontal"
         gutter={20}
         style={{ border: { stroke: "black" }, title: { fontSize: 20 } }}
