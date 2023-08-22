@@ -31,7 +31,7 @@ export default function Percentage() {
 
           <label>
             Cantidad
-            <input onChange={(e) => setAmount(e.target.value)} type="number" />
+            <input step="any" onChange={(e) => setAmount(e.target.value)} type="number" />
           </label>
           <button className="btn-calcular">Calcular</button>
         </div>
@@ -50,7 +50,7 @@ export default function Percentage() {
             Porcentaje añadido a la cantidad
             <span className="price color-primary">{added}</span>
           </p>
-          ℹ{" "}
+          ℹ
           <small>
             Si la cantidad inicial es {amount} y quiere añadir {percentage}%, la
             cantidad final es {added}

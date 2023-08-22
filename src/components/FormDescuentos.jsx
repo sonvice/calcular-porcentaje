@@ -40,7 +40,7 @@ console.log(ahorros, discount);
           <label>
             Precio original
             <input
-              
+              step="any"
               required
               placeholder="260"
               onChange={(e) => setOriginalPrice(e.target.value)}
